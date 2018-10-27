@@ -43,6 +43,7 @@
     "karma-webpack": "^3.0.5",
     "rosie": "^2.0.1",
     "sinon": "^7.1.0",
+    "storybook-vue-router": "^1.0.1",
     "vue-cli-plugin-storybook": "^0.4.8",
     "vue-template-compiler": "^2.5.17"
   }
