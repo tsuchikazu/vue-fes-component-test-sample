@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import { expect } from 'chai'
 import sinon from 'sinon'
 import flushPromises from 'flush-promises'
-import VueRouter from 'vue-router'
 import Posts from '@/pages/Posts.vue'
 import { Factory } from 'rosie'
 
@@ -12,7 +11,6 @@ const localVue = createLocalVue()
 
 // ローカルなVueコンストラクタにVuex/VueRouterをインストール
 localVue.use(Vuex)
-localVue.use(VueRouter)
 
 describe('Posts.vue', () => {
   let wrapper
