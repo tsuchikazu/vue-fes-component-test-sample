@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "echo '{ \"posts\": [] }' > db.json",
     "serve": "vue-cli-service serve",
     "api": "json-server --watch db.json --port 8000",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "lint:fix": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
