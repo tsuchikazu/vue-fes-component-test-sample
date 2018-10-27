@@ -57,8 +57,10 @@ describe('Posts.vue', () => {
   })
 
   describe('表示', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       wrapper = mount(Posts, { stubs: ['router-link'], mocks: { $router }, store, localVue })
+      actions.fetchPosts.resolves()
+      await flushPromises()
     })
 
     describe('投稿が0件の場合', () => {

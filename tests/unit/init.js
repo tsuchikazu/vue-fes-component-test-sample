@@ -1,4 +1,4 @@
-const { Factory } = require('rosie')
+import { Factory } from 'rosie'
 
 Factory.define('post')
   .sequence('id')
