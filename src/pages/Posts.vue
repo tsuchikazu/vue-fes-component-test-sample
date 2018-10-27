@@ -60,7 +60,7 @@ export default {
     hideProgress () {
       this.progress = false
       this.message = ''
-    },
+    }
   }
 }
 </script>

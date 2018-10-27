@@ -40,7 +40,7 @@ export default {
   methods: {
     ...mapActions(['fetchPost', 'updatePost']),
     async update () {
-      await this.updatePost({post: this.post})
+      await this.updatePost({ post: this.post })
       this.$router.push({ path: '/' })
     }
   }

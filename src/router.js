@@ -12,6 +12,6 @@ export default new Router({
   routes: [
     { path: '/', name: 'posts', component: Posts },
     { path: '/new', name: 'new-post', component: NewPost },
-    { path: '/:id', name: 'edit-post', component: EditPost, props: (route) => ({id: Number(route.params.id)}) }
+    { path: '/:id', name: 'edit-post', component: EditPost, props: (route) => ({ id: Number(route.params.id) }) }
   ]
 })

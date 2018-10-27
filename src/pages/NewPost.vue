@@ -30,7 +30,7 @@ export default {
   methods: {
     ...mapActions(['createPost']),
     async save () {
-      await this.createPost({post: this.post})
+      await this.createPost({ post: this.post })
       this.$router.push({ path: '/' })
     }
   }

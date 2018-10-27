@@ -32,7 +32,7 @@ export default new Vuex.Store({
     },
     async fetchPosts ({ commit }) {
       function wait (sec) {
-        return new Promise(resolve => setTimeout(resolve, sec*1000));
+        return new Promise(resolve => setTimeout(resolve, sec * 1000))
       }
       await wait(3)
       const response = await client.get(`/posts`)
