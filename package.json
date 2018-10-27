@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup": "echo '{ \"posts\": [] }' > db.json",
     "serve": "vue-cli-service serve",
-    "api": "json-server --watch db.json --port 8000",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "api": "json-server --watch db.json --port 8000",
+    "build:storybook": "vue-cli-service build:storybook -c config/storybook",
     "lint:fix": "vue-cli-service lint --fix",
+    "serve:storybook": "vue-cli-service serve:storybook -p 6006 -c config/storybook",
+    "setup": "echo '{ \"posts\": [] }' > db.json",
     "test:unit": "vue-cli-service test:unit --include tests/unit/init.js",
-    "test:unit:dev": "vue-cli-service test:unit --include tests/unit/init.js --watch",
     "test:unit-karma": "karma start --single-run",
-    "test:unit-karma:dev": "karma start"
+    "test:unit-karma:dev": "karma start",
+    "test:unit:dev": "vue-cli-service test:unit --include tests/unit/init.js --watch"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -21,6 +23,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "4.0.0-alpha.20",
+    "@storybook/addon-links": "4.0.0-alpha.20",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-plugin-unit-mocha": "^3.0.5",
@@ -39,6 +43,7 @@
     "karma-webpack": "^3.0.5",
     "rosie": "^2.0.1",
     "sinon": "^7.1.0",
+    "vue-cli-plugin-storybook": "^0.4.8",
     "vue-template-compiler": "^2.5.17"
   }
 }
