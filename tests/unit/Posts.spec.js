@@ -5,6 +5,7 @@ import sinon from 'sinon'
 import flushPromises from 'flush-promises'
 import VueRouter from 'vue-router'
 import Posts from '@/pages/Posts.vue'
+import { Factory } from 'rosie'
 
 // ローカルなVueコンストラクタを作成
 const localVue = createLocalVue()
@@ -14,6 +15,7 @@ localVue.use(Vuex)
 localVue.use(VueRouter)
 
 describe('Posts.vue', () => {
+  let wrapper
   let actions
   let $router
   let store
@@ -35,8 +37,6 @@ describe('Posts.vue', () => {
   })
 
   describe('created', () => {
-    let wrapper
-
     beforeEach(() => {
       wrapper = mount(Posts, { stubs: ['router-link'], mocks: { $router }, store, localVue })
     })
@@ -53,6 +53,32 @@ describe('Posts.vue', () => {
       actions.fetchPosts.resolves()
       await flushPromises()
       expect(wrapper.text()).not.to.contain('読み込み中...')
+    })
+  })
+
+  describe('表示', () => {
+    beforeEach(() => {
+      wrapper = mount(Posts, { stubs: ['router-link'], mocks: { $router }, store, localVue })
+    })
+
+    describe('投稿が0件の場合', () => {
+      beforeEach(() => {
+        store.state.posts = []
+      })
+      it('0件の表示がされていること', () => {
+        expect(wrapper.text()).to.contain('まだ投稿はありません')
+      })
+    })
+
+    describe('投稿が1件以上の場合', () => {
+      const post = Factory.build('post')
+
+      beforeEach(() => {
+        store.state.posts = [post]
+      })
+      it('投稿の内容が表示されていること', () => {
+        expect(wrapper.text()).to.contain(post.title)
+      })
     })
   })
 })
