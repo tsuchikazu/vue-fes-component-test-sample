@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>一覧</h1>
-    <table>
+
+    <p v-if="progress" class="progress">
+      {{ message }}
+    </p>
+    <table v-else>
       <thead>
         <tr>
           <td>タイトル</td>
@@ -27,14 +31,36 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
+  data () {
+    return {
+      progress: false,
+      message: ''
+    }
+  },
   created () {
-    this.fetchPosts()
+    this.loadPosts()
   },
   computed: {
     ...mapState(['posts'])
   },
   methods: {
-    ...mapActions(['fetchPosts'])
+    ...mapActions(['fetchPosts']),
+    async loadPosts () {
+      this.setProgress('読み込み中...')
+      try {
+        await this.fetchPosts()
+      } finally {
+        this.hideProgress()
+      }
+    },
+    setProgress (message) {
+      this.progress = true
+      this.message = message
+    },
+    hideProgress () {
+      this.progress = false
+      this.message = ''
+    },
   }
 }
 </script>

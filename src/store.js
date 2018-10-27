@@ -31,6 +31,10 @@ export default new Vuex.Store({
       commit('addPost', { post: response.data })
     },
     async fetchPosts ({ commit }) {
+      function wait (sec) {
+        return new Promise(resolve => setTimeout(resolve, sec*1000));
+      }
+      await wait(3)
       const response = await client.get(`/posts`)
       commit('clearPosts')
       response.data.forEach(post => {
