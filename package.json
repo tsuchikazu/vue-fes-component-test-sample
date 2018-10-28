@@ -10,6 +10,7 @@
     "build:storybook": "vue-cli-service build:storybook -c config/storybook",
     "lint:fix": "vue-cli-service lint --fix",
     "serve:storybook": "vue-cli-service serve:storybook -p 6006 -c config/storybook",
+    "screenshot:storybook": "zisui --serverCmd 'npm run serve:storybook' --outDir screenshots/storybook http://localhost:6006",
     "setup": "echo '{ \"posts\": [] }' > db.json",
     "test:unit": "vue-cli-service test:unit --include tests/unit/init.js",
     "test:unit-karma": "karma start --single-run",
@@ -45,6 +46,7 @@
     "sinon": "^7.1.0",
     "storybook-vue-router": "^1.0.1",
     "vue-cli-plugin-storybook": "^0.4.8",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "zisui": "^1.2.2"
   }
 }
