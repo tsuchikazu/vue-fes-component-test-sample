@@ -5,6 +5,7 @@ import sinon from 'sinon'
 import flushPromises from 'flush-promises'
 import Posts from '@/pages/Posts.vue'
 import { Factory } from 'rosie'
+import { screenshot } from 'karma-nightmare'
 
 // ローカルなVueコンストラクタを作成
 const localVue = createLocalVue()
@@ -36,11 +37,12 @@ describe('Posts.vue', () => {
 
   describe('created', () => {
     beforeEach(() => {
-      wrapper = mount(Posts, { stubs: ['router-link'], mocks: { $router }, store, localVue })
+      wrapper = mount(Posts, { stubs: ['router-link'], mocks: { $router }, store, localVue, attachToDocument: true })
     })
 
-    it('loading表示されること', () => {
+    it('loading表示されること', async () => {
       expect(wrapper.text()).to.contain('読み込み中...')
+      await screenshot('./screenshots/Posts/created/loading.png')
     })
 
     it('fetchPostsがdispatchされること', () => {
